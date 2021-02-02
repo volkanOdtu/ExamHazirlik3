@@ -1,0 +1,37 @@
+package denemeExam2;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+class Graph{
+	int v;
+	LinkedList<Integer> adj[];
+	
+	public Graph(int v) {
+		this.v = v;
+		this.adj = new LinkedList[v];
+		for(int i =0; i< v; i++)
+			adj[i]= new LinkedList<Integer>();
+	}
+	void addEdge(int v ,int w) {
+		adj[v].add(w);
+	}
+	public int isIntersecting(boolean[] source ,boolean[] destination) {
+		int intersectionNode = -1;
+		//if a vertex is visited by both front BFS and back BFS then return that node 
+		for(int i =0 ; i< nodeCount ; i++) {
+			if(source[i] && destination[i])
+				return i;
+		}
+		return -1;
+	}
+}
+public class GraphNetwork {
+
+	public static void main(String[] args) {
+		GraphNetwork g = new GraphNetwork();
+		g.ad
+	}
+
+}

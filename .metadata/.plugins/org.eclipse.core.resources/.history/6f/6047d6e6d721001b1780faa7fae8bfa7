@@ -1,0 +1,30 @@
+package deneme;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Booking {
+
+	
+	public static List<Integer> meanderingArray(List<Integer> unsorted) {
+	    // Write your code here
+		
+		unsorted.sort((o1 ,o2) -> { if( o1 > o2) return 1; else return -1; });
+
+		return null;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Booking a = new Booking();
+		List<Integer> b = new ArrayList<Integer>();
+		b.add(-1);
+		b.add(1);
+		b.add(2);
+		b.add(3);
+		b.add(-5);
+		
+		a.meanderingArray(b);
+	}
+
+}

@@ -1,0 +1,31 @@
+package deneme;
+
+import java.util.LinkedList;
+
+public class RemoveDups {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		LinkedList<String> unsortedLinkedList = new LinkedList<String>();
+		
+		unsortedLinkedList.add("ali");
+		unsortedLinkedList.add("veli");
+		unsortedLinkedList.add("elli");
+		unsortedLinkedList.add("ali");
+		unsortedLinkedList.add("deli");
+		
+		LinkedList<String> uniqueLinkedList = new LinkedList<String>();
+				
+		for(String item :unsortedLinkedList) {
+			if(! uniqueLinkedList.contains(item))
+				uniqueLinkedList.add(item);
+		}
+		
+		int count = uniqueLinkedList.size();
+		
+		
+	}
+
+}

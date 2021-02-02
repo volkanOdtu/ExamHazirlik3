@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;denemeExam2.Graph&apos; to &apos;GraphNetwork&apos;&#x0D;&#x0A;- Original project: &apos;denemNew&apos;&#x0D;&#x0A;- Original element: &apos;denemeExam2.Graph&apos;&#x0D;&#x0A;- Renamed element: &apos;denemeExam2.GraphNetwork&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Graph&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;denemeExam2{Graph.java[Graph" matchStrategy="1" name="GraphNetwork" qualified="false" references="true" similarDeclarations="false" stamp="1610713230353" textual="false" version="1.0"/>
+</session>

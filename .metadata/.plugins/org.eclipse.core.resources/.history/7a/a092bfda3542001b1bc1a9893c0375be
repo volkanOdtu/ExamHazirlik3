@@ -1,0 +1,62 @@
+package denemeExam;
+
+  
+
+public class AncestorNoParent {
+	
+	Node createMinimalBSTTree(int[] array) {
+		return createMinimalBSTTree(array ,0 , array.length -1 );
+	}
+	
+	Node createMinimalBSTTree(int[] array, int start ,int end) {
+		if(end < start )
+			return null;
+		
+		int mid = (start + end ) / 2;
+		Node n = new Node(); n.data =array[mid];
+		n.left = createMinimalBSTTree(array, start, mid -1);
+		n.right = createMinimalBSTTree(array, mid + 1, end);
+		
+		return n;
+	}
+	Node getNode(Node node ,int data) {
+		if(node.data ==  data) 
+			return node;
+		
+		if( data < node.data)
+			return getNode(node.right, data);
+		else
+			return getNode(node.left, data);
+	}
+	Node ancestorHelper(Node root ,Node first ,Node  second) {
+		if(root == null || root == first || root == second )
+			return root;
+		
+		boolean firstNodeOnLeft =covers(root.left, first);
+		boolean secondNodeOnLeft =covers(root.left, second);
+		
+		if(firstNodeOnLeft != secondNodeOnLeft) //nodes are on different sides
+			return root;
+
+		Node childSideNode =firstNodeOnLeft ? root.left :root.right;
+		
+		return ancestorHelper(childSideNode, first, second);
+	}
+	boolean covers(Node root ,Node node) {
+		if( root == null ) return false;
+		if( root == node ) return true;
+		
+		return covers(root.left , node) ||  covers(root.right, node);
+	}
+	public static void main(String[] args) {
+		int[] arr = { 0 , 1 , 2, 3 ,4 ,5 ,6 ,7 };
+		
+		AncestorNoParent obj = new AncestorNoParent();
+		
+		Node root = obj.createMinimalBSTTree(arr);
+		obj
+		 
+		boolean res = obj.checkMinMax(root, null, null);
+	}
+
+}

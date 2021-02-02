@@ -1,0 +1,149 @@
+package deneme;
+
+import java.util.LinkedList;
+
+public class RemoveDups<T>{
+
+	LinkedListNode<T> head = null;
+	LinkedListNode<T> tail= null;
+	int size =0 ;
+	
+	private class LinkedListNode<T>{
+		LinkedListNode<T> prev;
+		LinkedListNode<T> next;
+		T data;
+		
+		public LinkedListNode(T data) {
+			this.data = data;
+		}		
+	}
+	
+	T peekLast() {
+		if(size == 0)
+			throw new RuntimeException("Empty List");
+		
+		return tail.data;
+	}
+	T peekFirst() {
+		if(size == 0)
+			throw new RuntimeException("Empty List");
+		
+		return head.data;
+	}
+	T removeFirst() {
+		if(size == 0)
+			throw new RuntimeException("Empty List");
+		
+		T data = head.data;
+		
+		if(head == tail) {
+			head = null; tail = null;
+		}else {
+			head = head.next;
+			head.prev = null;
+		}
+		size--;
+		
+		return data;
+	}
+	T removeLast() {
+		if(size == 0)
+			throw new RuntimeException("Empty List");
+		
+		T data = tail.data;
+		
+		if(head == tail) {
+			head = null; tail = null;
+		}
+		else {
+			tail = tail.prev;
+			tail.next =null;
+		}
+		
+		size--;
+		
+		return data;
+	}
+	boolean remove(T data) {
+		boolean result =false;
+		
+		if(head.data == data) { removeFirst();return true; }
+		if(tail.data == data) { removeLast() ;return true; }
+		
+		LinkedListNode<T> tempNode = head;
+		
+		while(tempNode != null) {
+			if(tempNode.data == data) {
+				(tempNode.prev).next = tempNode.next;
+				(tempNode.next).prev = tempNode.prev;
+				size--;
+				result = true;
+				break;				
+			}
+			tempNode = tempNode.next;
+		}
+		return result;
+	}
+	
+	//T int ,string olabilir
+	void addLast(T data) {
+		LinkedListNode<T> newNode = new LinkedListNode<T>(data);
+		if(head == null)
+			head= tail = newNode;
+		else {
+			tail.next =  newNode;
+			newNode.prev = tail;
+			newNode.next = null;
+			tail = newNode;
+		}
+	}
+	void addFirst(T data) {
+		LinkedListNode<T> newNode = new LinkedListNode<T>(data);
+		if(head == null)
+			head= tail = newNode;
+		else {
+			newNode.next =  head;
+			head.prev = newNode;
+			newNode.prev= null;
+			head = newNode;
+		}
+	}
+	
+	
+	void getFirst() {
+		
+	}
+	public static void main(String[] args) {
+		
+		LinkedListNode node1 = new LinkedListNode(3);
+		LinkedListNode node2 = new LinkedListNode(2);
+		LinkedListNode node3 = new LinkedListNode(4);
+		LinkedListNode node4 = new LinkedListNode(1);
+		LinkedListNode node5 = new LinkedListNode(3);
+		LinkedListNode node6 = new LinkedListNode(2);
+		
+		
+		
+		
+		LinkedList<String> unsortedLinkedList = new LinkedList<String>();
+		unsortedLinkedList.
+		unsortedLinkedList.add("ali");
+		unsortedLinkedList.add("veli");
+		unsortedLinkedList.add("elli");
+		unsortedLinkedList.add("ali");
+		unsortedLinkedList.add("deli");
+		
+		LinkedList<String> uniqueLinkedList = new LinkedList<String>();
+				
+		for(String item :unsortedLinkedList) {
+			if(! uniqueLinkedList.contains(item))
+				uniqueLinkedList.add(item);
+		}
+		
+		int count = uniqueLinkedList.size();
+		
+		uniqueLinkedList.
+		
+	}
+
+}

@@ -1,0 +1,39 @@
+package denemeExam;
+
+import deneme.Node;
+
+class Node{
+	int data;
+	Node parent;
+}
+
+
+public class Ancestor {
+
+	int depth(Node node) {
+		int depth =0 ;
+		while(node != null) {
+			node = node.parent;
+			depth++;
+		}
+		return depth;
+	}
+	
+	Node findNodeAtTheLevel(Node node ,int depth) {
+		while(depth!=0 ) {
+			node = node.parent;
+			depth--;
+		}
+		return node;
+	}
+	
+	Node CommonAncestor(Node firstNode ,Node secondNode) {
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

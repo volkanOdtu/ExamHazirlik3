@@ -1,0 +1,61 @@
+package denemeExam2;
+
+public class Exam {
+
+	public String getCompressed(String text)
+	{
+		String currChar ,nextChar;
+		int currCharCount = 1;
+		StringBuilder result = new StringBuilder();
+		boolean whiteSpaceExists =false;
+		
+		for(int i =0 ; i < text.length() ; i++ )
+		{
+			currChar = text.substring(i ,i+1);
+			
+				
+			if( (i+2 ) > text.length())
+			{
+				//currCharCount++;
+				result.append(currChar).append(currCharCount);
+				break;
+			}
+				
+			
+			nextChar = text.substring(i+1 ,i+2);
+			
+			if(nextChar.equals(" ")) {
+				if(whiteSpaceExists == true) {
+					continue;
+				}
+				else {
+					if(currChar.equals(" ")) {
+						result.append(" ");
+						whiteSpaceExists = true;
+						continue;
+					}					
+				}
+			}else
+				whiteSpaceExists = false;
+			
+			if(currChar.equals(nextChar) )
+				currCharCount++;
+			else
+			{
+				if(currChar.equals(" "))
+					result.append(" ");
+				else {
+				result.append(currChar).append(currCharCount);
+				currCharCount = 1;}
+			}
+		}
+		
+		return result.toString();
+	}
+
+	public static void main(String[] args) {
+		Exam e = new Exam();
+		System.out.println( e.getCompressed("a   b"));
+	}
+
+}

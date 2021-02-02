@@ -1,0 +1,99 @@
+package denemeExam2;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+class Graph{
+	int v;
+	LinkedList<Integer> adj[];
+	
+	public Graph(int v) {
+		this.v = v;
+		this.adj = new LinkedList[v];
+		for(int i =0; i< v; i++)
+			adj[i]= new LinkedList<Integer>();
+	}
+	
+	void addEdge(int v ,int w) {
+		adj[v].add(w);
+	}
+	
+	void DepthFirstSearch(int vertexNoStarting) {
+		//Tum vertexleri tutucaz ,visited mi degil mi
+		boolean[] visitedArr = new boolean[v];
+		System.out.println("Depth First traversel starting from vertex:" + vertexNoStarting);
+		DFSUtil(vertexNoStarting, visitedArr);
+	}
+	
+	void DFSUtil(int vertexNo ,boolean[] visitedArr) {
+		visitedArr[vertexNo] = true;
+		System.out.println("vertex no:" + vertexNo);
+		 
+		Iterator<Integer> iterator = adj[vertexNo].listIterator();
+		
+		while (iterator.hasNext()) {
+			int adjVertexNo = iterator.next();
+			if( !visitedArr[adjVertexNo])
+				DFSUtil(adjVertexNo, visitedArr); 
+		}			
+	}
+	
+	void BreadthFirstSearch(int vertexNoStarting) {
+		boolean[] visitedArr = new boolean[v];
+		System.out.println("Breadth First traversel starting from vertex:" + vertexNoStarting);		
+		BFSUtil( vertexNoStarting , visitedArr);
+	}
+	
+	void BFSUtil(int vertexNo , boolean[] visitedArr) {
+		Queue<Integer> queueNodes = new LinkedList<Integer>();
+		
+		visitedArr[vertexNo] = true;System.out.println("vertex no:" + vertexNo);
+		
+		queueNodes.add(vertexNo);
+		
+		while(!queueNodes.isEmpty()) {
+			int currVertexNo = queueNodes.poll();			
+			
+			for(int i=0 ; i< adj[currVertexNo].size() ; i++) {
+				int adjVertexNo = adj[currVertexNo].get(i);
+						
+				if(!visitedArr[adjVertexNo]) {					
+					visitedArr[adjVertexNo] = true;
+					System.out.println("vertex no:" + adjVertexNo);
+					queueNodes.add(adjVertexNo);
+				}
+			}
+			
+		}
+	}
+	public int isIntersecting(boolean[] source ,boolean[] destination) {
+		int intersectionNode = -1;
+		//if a vertex is visited by both front BFS and back BFS then return that node 
+		for(int i =0 ; i< 5 ; i++) {
+			if(source[i] && destination[i])
+				return i;
+		}
+		return -1;
+	}
+	
+}
+public class GraphNetwork {
+
+	public static void main(String[] args) {
+		Graph g = new Graph(4); //Toplamda 4 vertex var
+		
+		g.addEdge(0, 1);
+		g.addEdge(0,2);
+		g.addEdge(1, 2);
+		g.addEdge(2, 0);
+		g.addEdge(2, 3);
+		
+		//System.out.println("Depth First traversel starting from vertex 2");
+		//g.DepthFirstSearch(2);
+		g.BreadthFirstSearch(2);
+	}
+
+}

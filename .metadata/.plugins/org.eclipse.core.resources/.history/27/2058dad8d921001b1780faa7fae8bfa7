@@ -1,0 +1,58 @@
+package deneme;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+public class Booking {
+
+	
+	public static List<Integer> meanderingArray(List<Integer> unsorted) {
+	    // Write your code here
+		
+		unsorted.sort((o1 ,o2) -> { if( o1 < o2) return 1; else return -1; });
+
+		List<Integer> largest = new ArrayList<Integer>();
+		List<Integer> smallest = new ArrayList<Integer>();
+		 
+		 
+		
+		List<Integer> finalList = new ArrayList<Integer>();
+		int largestNo ,smallestNo;
+		int unsortedSize = unsorted.size();
+		int i=0;
+		
+		while(unsortedSize >0 )
+		{
+			if( (i%2) == 0)
+			{
+				largestNo = unsorted.get(i);
+				finalList.add(largestNo);
+				unsorted.remove(largestNo);
+			}else
+			{
+				smallestNo = unsorted.get(unsortedSize -1);
+				finalList.add(smallestNo);
+				unsorted.remove(smallestNo);				
+			}
+			unsortedSize--;	
+			i++;
+		}
+			
+		return finalList;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Booking a = new Booking();
+		List<Integer> b = new ArrayList<Integer>();
+		b.add(-1);
+		b.add(1);
+		b.add(2);
+		b.add(3);
+		b.add(-5);
+		
+		a.meanderingArray(b);
+	}
+
+}

@@ -1,0 +1,10 @@
+package denemeExam2;
+
+public class GraphNetwork {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
